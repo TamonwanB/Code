@@ -1,0 +1,45 @@
+﻿@model Ruamchai.Models.FinModel
+@{
+        ViewData["Title"] = "Finreport";
+    Layout = "~/Views/Shared/_LayoutforFin.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+        <h1 class="header"><span>รายการค่าใช้จ่ายผู้ป่วย</span></h1>
+        <form action="@Url.Action("PdffileIPD","Fin")" method="get">    
+            <div class="card">
+                <label>ประเภทเอกสาร</label>
+                    <select class="form-select" aria-label="Default select example" id="Selectoption" name="Selectoption" required>
+                        <option value="">Select one</option>                   
+                        <option id="1" value="1">IN1 เงินสด</option>                  
+                        <option id="2" value="2">IN2 ใบแจ้งหนี้</option>                  
+                        <option id="3" value="3">IN3 ใบแจ้งค่าใช้จ่าย</option>                   
+                        <option id="4" value="4">IN3 คนไข้ประกันสังคม</option>
+                        <option id="5" value="5">IN5 คนไข้ 30 บาท</option>
+                    </select>   
+                    <label for="Printdate">วันที่</label>   
+                    <input class="calender" aria-label="Default select example" for="Printdate" id="Printdate" name="Printdate" type="date" required />
+            </div>                              
+            <div>   
+                <button type="submit" class="buttonfin">ค่าใช้จ่ายคนไข้ใน(PDF)</button>
+                <button type="submit" formaction="/Fin/PdffileOPD" class="buttonfin">ค่าใช้จ่ายคนไข้นอก(PDF)</button>                    
+            </div>
+            <div>                  
+                <button type="submit" formaction="/Fin/ExcelIPD" class="buttonfin">ค่าใช้จ่ายคนไข้ใน(Excel)</button>                            
+                <button type="submit" formaction="/Fin/ExcelOPD" class="buttonfin">ค่าใช้จ่ายคนไข้นอก(Excel)</button>     
+            </div>      
+        </form>            
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+
